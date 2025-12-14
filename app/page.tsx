@@ -50,9 +50,23 @@ export default function Home() {
   const [popup, setPopup] = useState<AnimalInfo | null>(null)
 
   useEffect(() => {
+    // 처음 로드
     fetch('/api/models')
       .then(res => res.json())
       .then(data => setModels(data))
+
+    // 30초마다 새 데이터 체크
+    const interval = setInterval(() => {
+      fetch('/api/models')
+        .then(res => res.json())
+        .then(data => {
+          if (data.length !== models.length) {
+            setModels(data)
+          }
+        })
+    }, 30000) // 30초
+
+    return () => clearInterval(interval)
   }, [])
 
   const cols = 3
