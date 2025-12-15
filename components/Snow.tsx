@@ -30,8 +30,8 @@ export default function Snow({ count = 500 }) {
             positions[i * 3 + 1] -= delta * 3  // 아래로 떨어짐
 
             // 바닥에 닿으면 위로 리셋
-            if (positions[i * 3 + 1] < 0) {
-                positions[i * 3 + 1] = 30
+            if (positions[i * 3 + 1] < - 50) {
+                positions[i * 3 + 1] = 50
             }
         }
 
