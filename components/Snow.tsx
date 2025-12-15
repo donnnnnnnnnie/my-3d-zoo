@@ -13,7 +13,7 @@ export default function Snow({ count = 500 }) {
 
         for (let i = 0; i < count; i++) {
             positions[i * 3] = (Math.random() - 0.5) * 40      // x
-            positions[i * 3 + 1] = Math.random() * 100 - 50          // y
+            positions[i * 3 + 1] = Math.random() * 200 - 100   // y (-100 ~ 100)
             positions[i * 3 + 2] = (Math.random() - 0.5) * 40  // z
         }
 
@@ -27,11 +27,11 @@ export default function Snow({ count = 500 }) {
         const positions = ref.current.geometry.attributes.position.array as Float32Array
 
         for (let i = 0; i < count; i++) {
-            positions[i * 3 + 1] -= delta * 3  // 아래로 떨어짐
+            positions[i * 3 + 1] -= delta * 3
 
-            // 바닥에 닿으면 위로 리셋
-            if (positions[i * 3 + 1] < 0) {
-                positions[i * 3 + 1] = 30
+            // 아래 끝까지 가면 위로 리셋
+            if (positions[i * 3 + 1] < -100) {
+                positions[i * 3 + 1] = 100
             }
         }
 
