@@ -13,7 +13,7 @@ export default function Snow({ count = 500 }) {
 
         for (let i = 0; i < count; i++) {
             positions[i * 3] = (Math.random() - 0.5) * 40      // x
-            positions[i * 3 + 1] = Math.random() * 30          // y
+            positions[i * 3 + 1] = Math.random() * 100 - 50          // y
             positions[i * 3 + 2] = (Math.random() - 0.5) * 40  // z
         }
 
@@ -42,10 +42,10 @@ export default function Snow({ count = 500 }) {
         <points ref={ref} geometry={geometry}>
             <pointsMaterial
                 color="#ffffff"
-                size={0.15}
+                size={0.3}
                 transparent
                 opacity={0.8}
-                sizeAttenuation
+                sizeAttenuation={false}
             />
         </points>
     )
