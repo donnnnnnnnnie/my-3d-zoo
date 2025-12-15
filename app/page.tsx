@@ -5,6 +5,7 @@ import { Canvas, useThree, useFrame } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import DynamicModel from '@/components/DynamicModel'
 import LowPolySky from '@/components/LowPolySky'
+import Snow from '@/components/Snow'
 
 interface AnimalInfo {
   id: string
@@ -76,6 +77,7 @@ export default function Home() {
   return (
     <>
       <Canvas camera={{ position: [0, 0, 12], fov: 50 }}>
+        <Snow />
         <LowPolySky />
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
